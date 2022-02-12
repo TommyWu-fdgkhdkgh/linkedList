@@ -11,7 +11,7 @@ linkedList.o: src/linkedList.c
 	$(CC) $(CCFLAGS) -c -o $@ $^	
 
 test.o: tests/test.c 
-	$(CC) $(CCFLGAS) -c -o $@ $^	
+	$(CC) $(CCFLAGS) -c -o $@ $^	
 	
 
 clean:
