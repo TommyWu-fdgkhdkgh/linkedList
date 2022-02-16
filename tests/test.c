@@ -21,7 +21,59 @@ int cmpDl(dlNode_t *a, dlNode_t *b) {
 }
 
 int main() {
+   dlNode_t *root = NULL;
+
+   Node *an = (Node *)malloc(sizeof(Node));   
+   an->data = 10;
    
+   Node *bn = (Node *)malloc(sizeof(Node));
+   bn->data = 20;
+
+   Node *cn = (Node *)malloc(sizeof(Node));
+   cn->data = 5;
+
+   DlInsertInorder(&root, &bn->dlNode, cmpDl); 
+   DlInsertInorder(&root, &an->dlNode, cmpDl); 
+   DlInsertInorder(&root, &cn->dlNode, cmpDl); 
+
+   dlNode_t *elt = NULL; 
+
+   DL_FOREACH(root, elt) {
+      Node *tn = container_of(elt, Node, dlNode);
+      printf(" %d ", tn->data);
+   }
+   printf("\n");
+
+   DlUnLink(&root, &bn->dlNode);
+
+   DL_FOREACH(root, elt) {
+      Node *tn = container_of(elt, Node, dlNode);
+      printf(" %d ", tn->data);
+   }
+   printf("\n");
+
+   DlInsertInorder(&root, &bn->dlNode, cmpDl); 
+   DlUnLink(&root, &cn->dlNode);
+
+   DL_FOREACH(root, elt) {
+      Node *tn = container_of(elt, Node, dlNode);
+      printf(" %d ", tn->data);
+   }
+   printf("\n");
+
+   DlInsertInorder(&root, &cn->dlNode, cmpDl); 
+   DlUnLink(&root, &an->dlNode);
+
+   DL_FOREACH(root, elt) {
+      Node *tn = container_of(elt, Node, dlNode);
+      printf(" %d ", tn->data);
+   }
+   printf("\n");
 
    return 0;
 }
+
+
+
+
+
