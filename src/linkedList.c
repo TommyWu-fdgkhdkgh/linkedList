@@ -1,5 +1,28 @@
 #include "linkedList.h"
-#include "stddef.h"
+#include <stddef.h>
+#include <assert.h>
+
+void DlPrePend(dlNode_t **p2head, dlNode_t *add) {
+   assert(p2head);
+
+   add->next = *p2head; 
+   *p2head = add;
+}
+
+void DlAppend(dlNode_t **p2head, dlNode_t *add) {
+   assert(p2head); 
+
+   if(!(*p2head)) {
+      *p2head = add;
+      return;
+   } 
+
+   dlNode_t *nown = *p2head;
+   while(nown->next) {
+      nown = nown->next;
+   }
+   nown->next = add; 
+}
 
 void DlInsertInorder(dlNode_t **p2head,
                      dlNode_t *add,
